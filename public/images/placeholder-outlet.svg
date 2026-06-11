@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
+    <rect width="800" height="600" fill="#FFFFFF"/>
+    <rect x="40" y="40" width="720" height="520" fill="none" stroke="#ECEDEA" stroke-width="1"/>
+
+    <g stroke="#2D4D31" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M 200 420 L 200 240 L 400 160 L 600 240 L 600 420 Z"/>
+        <line x1="200" y1="420" x2="600" y2="420"/>
+        <rect x="260" y="290" width="80" height="100"/>
+        <line x1="300" y1="290" x2="300" y2="390"/>
+        <line x1="260" y1="340" x2="340" y2="340"/>
+        <rect x="460" y="290" width="80" height="100"/>
+        <line x1="500" y1="290" x2="500" y2="390"/>
+        <line x1="460" y1="340" x2="540" y2="340"/>
+        <path d="M 370 420 L 370 360 L 430 360 L 430 420"/>
+        <line x1="420" y1="390" x2="425" y2="390"/>
+    </g>
+
+    <text x="400" y="490" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="12" letter-spacing="3" fill="#2D4D31" font-weight="500">OUTLET</text>
+    <text x="400" y="515" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="10" letter-spacing="2" fill="#9CA39E">WARKOP MEDAN</text>
+</svg>

@@ -1,0 +1,195 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-06-11T00:00:00.000Z",
+  "title": "Design System: warkopmdj",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Forest Green",
+        "canonical": "#2D4D31",
+        "tonalRamp": ["#1F3522", "#2D4D31", "#4A6B4E", "#6E8C72", "#8FA896", "#B2C4BA", "#D5DFDA", "#EEF3EF"]
+      },
+      "bg": {
+        "role": "neutral",
+        "displayName": "Pure White",
+        "canonical": "#FFFFFF"
+      },
+      "bg-alt": {
+        "role": "neutral",
+        "displayName": "Warm Off-White",
+        "canonical": "#F7F7F5"
+      },
+      "text": {
+        "role": "neutral",
+        "displayName": "Deep Charcoal",
+        "canonical": "#14201A"
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted Gray",
+        "canonical": "#6F7670"
+      },
+      "border": {
+        "role": "neutral",
+        "displayName": "Light Border",
+        "canonical": "#ECEDEA"
+      },
+      "danger": {
+        "role": "semantic",
+        "displayName": "Danger Red",
+        "canonical": "#A2412B"
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero headlines, page titles"
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section headings, card titles"
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Sub-sections, component titles"
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Eyebrow text, category labels"
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Main content text"
+      }
+    },
+    "shadows": [
+      {
+        "name": "subtle",
+        "value": "0 1px 2px rgba(20, 32, 26, 0.04)",
+        "purpose": "Card resting state, small elements"
+      },
+      {
+        "name": "medium",
+        "value": "0 4px 18px rgba(20, 32, 26, 0.06)",
+        "purpose": "Hover states, elevated cards"
+      },
+      {
+        "name": "lifted",
+        "value": "0 12px 36px rgba(20, 32, 26, 0.10)",
+        "purpose": "Modals, dropdowns, floating elements"
+      }
+    ],
+    "motion": [
+      {
+        "name": "fast",
+        "value": "120ms ease",
+        "purpose": "Quick interactions like hover states"
+      },
+      {
+        "name": "base",
+        "value": "220ms ease",
+        "purpose": "Default transitions"
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "900px" },
+      { "name": "xl", "value": "1200px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Main CTA buttons with forest green background",
+      "html": "<button class=\"ds-btn-primary\">GET STARTED</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 11px 22px; border-radius: 4px; font-weight: 500; font-size: 0.92rem; letter-spacing: 0.005em; transition: background-color 220ms ease, color 220ms ease; border: 1px solid transparent; background-color: #2D4D31; color: #FFFFFF; } .ds-btn-primary:hover { background-color: #1F3522; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Secondary action buttons with light background",
+      "html": "<button class=\"ds-btn-secondary\">LEARN MORE</button>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 11px 22px; border-radius: 4px; font-weight: 500; font-size: 0.92rem; letter-spacing: 0.005em; transition: background-color 220ms ease, color 220ms ease, border-color 220ms ease; border: 1px solid #ECEDEA; background-color: #F7F7F5; color: #1F3522; } .ds-btn-secondary:hover { background-color: #EEF3EF; border-color: #2D4D31; }"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Tertiary buttons with transparent background",
+      "html": "<button class=\"ds-btn-outline\">VIEW ALL</button>",
+      "css": ".ds-btn-outline { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 11px 22px; border-radius: 4px; font-weight: 500; font-size: 0.92rem; letter-spacing: 0.005em; transition: background-color 220ms ease, color 220ms ease; border: 1px solid #2D4D31; background-color: transparent; color: #2D4D31; } .ds-btn-outline:hover { background-color: #2D4D31; color: #FFFFFF; }"
+    },
+    {
+      "name": "Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Content cards with white background and subtle border",
+      "html": "<div class=\"ds-card\"><div class=\"ds-card-media\"></div><div class=\"ds-card-body\"><h3 class=\"ds-card-title\">Card Title</h3><p class=\"ds-card-text\">Card description text goes here.</p></div></div>",
+      "css": ".ds-card { background-color: #FFFFFF; border: 1px solid #ECEDEA; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; transition: border-color 220ms ease; } .ds-card:hover { border-color: #D8DAD6; } .ds-card-media { width: 100%; aspect-ratio: 4/3; background-color: #F7F7F5; } .ds-card-body { padding: 24px; display: flex; flex-direction: column; gap: 10px; flex: 1; } .ds-card-title { font-family: Lora, Georgia, serif; font-size: 1.2rem; color: #1F3522; font-weight: 500; margin: 0; } .ds-card-text { color: #6F7670; font-size: 0.92rem; line-height: 1.6; margin: 0; }"
+    },
+    {
+      "name": "Input Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Form text input with border and focus state",
+      "html": "<input class=\"ds-input\" type=\"text\" placeholder=\"Enter text...\" />",
+      "css": ".ds-input { border: 1px solid #ECEDEA; border-radius: 4px; padding: 11px 14px; font-size: 0.92rem; font-family: Inter, system-ui, sans-serif; color: #14201A; background-color: #FFFFFF; transition: border-color 220ms ease, box-shadow 220ms ease; outline: none; width: 100%; } .ds-input:focus { border-color: #2D4D31; box-shadow: 0 0 0 3px rgba(45, 77, 49, 0.10); background-color: #FFFFFF; } .ds-input::placeholder { color: #9CA39E; }"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "navigation",
+      "description": "Sticky navbar with brand and navigation links",
+      "html": "<nav class=\"ds-navbar\"><div class=\"ds-navbar-inner\"><div class=\"ds-brand\"><div class=\"ds-logo\">W</div><div class=\"ds-brand-text\"><span class=\"ds-brand-name\">Warkop Medan</span><span class=\"ds-brand-tag\">Jakarta</span></div></div><ul class=\"ds-nav-links\"><li><a class=\"ds-nav-link\" href=\"#\">Home</a></li><li><a class=\"ds-nav-link\" href=\"#\">About</a></li><li><a class=\"ds-nav-link\" href=\"#\">Menu</a></li><li><a class=\"ds-nav-link\" href=\"#\">Contact</a></li></ul></div></nav>",
+      "css": ".ds-navbar { position: sticky; top: 0; z-index: 50; background-color: rgba(255, 255, 255, 0.88); backdrop-filter: blur(12px); border-bottom: 1px solid #ECEDEA; } .ds-navbar-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; max-width: 1200px; margin: 0 auto; padding: 0 24px; } .ds-brand { display: flex; align-items: center; gap: 12px; } .ds-logo { width: 36px; height: 36px; border-radius: 4px; background-color: #2D4D31; color: #FFFFFF; display: grid; place-items: center; font-family: Lora, Georgia, serif; font-weight: 500; font-size: 1rem; } .ds-brand-text { display: flex; flex-direction: column; line-height: 1.1; } .ds-brand-name { font-family: Lora, Georgia, serif; font-weight: 500; color: #1F3522; font-size: 1rem; } .ds-brand-tag { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.14em; color: #6F7670; } .ds-nav-links { display: flex; align-items: center; gap: 32px; list-style: none; margin: 0; padding: 0; } .ds-nav-link { font-size: 0.9rem; color: #6F7670; font-weight: 500; position: relative; transition: color 220ms ease; } .ds-nav-link:hover { color: #2D4D31; }"
+    },
+    {
+      "name": "Tag",
+      "kind": "chip",
+      "refersTo": "tag",
+      "description": "Small label/category tags",
+      "html": "<span class=\"ds-tag\">FEATURED</span>",
+      "css": ".ds-tag { display: inline-block; background-color: #F7F7F5; color: #6F7670; padding: 3px 10px; border-radius: 4px; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.02em; border: 1px solid #ECEDEA; } .ds-tag-accent { background-color: #EEF3EF; color: #1F3522; border-color: transparent; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Corner Cafe",
+    "overview": "Sistem visual ini menangkap suasana kedai kopi lokal yang hangat dan relax — seperti corner cafe yang jadi tempat kumpl anak muda Medan. Palette white + deep forest green memberikan keyakinan dan ketenangan tanpa terlihat dingin atau terlalu korporat. Font pairing Lora (serif) untuk heading + Inter (sans) untuk body memberikan karakter yang warmth tapi tetap readable.",
+    "keyCharacteristics": [
+      "Warm minimalism: Clean tapi tidak sterile. White background dengan green accents yang purposeful",
+      "Quiet confidence: Desain tidak rame. Biarkan konten (menu, outlet photos, events) jadi hero",
+      "Local authenticity: Visual yang mencerminkan kultur Medan, bukan AI-generated aesthetic",
+      "Approachable: Setiap pengguna merasa welcome — dari student yang cari kopi sampai businessman yang mau investasi"
+    ],
+    "rules": [
+      { "name": "The Subtle Surface Rule", "body": "Background surfaces are white or warm off-white only. Never use tinted backgrounds beyond these two neutrals.", "section": "colors" },
+      { "name": "The Primary Scarcity Rule", "body": "Forest green appears on ≤15% of any given screen. Its rarity is the point.", "section": "colors" },
+      { "name": "The Heading Voice Rule", "body": "All headings use Lora. Never mix heading fonts.", "section": "typography" },
+      { "name": "The Flat-By-Default Rule", "body": "Surfaces are flat at rest. Shadows appear only as a response to interaction or as elevation.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do use white or warm off-white backgrounds only. Keep surfaces clean.",
+      "Do use Lora for all headings and Inter for body text consistently.",
+      "Do use forest green sparingly — for CTAs, active states, and accent moments only.",
+      "Do maintain 4.5:1+ contrast ratio for body text against background.",
+      "Do use the established 8px radius for cards and 4px for buttons.",
+      "Do apply subtle shadows only on hover or elevation, never on resting state."
+    ],
+    "donts": [
+      "Don't use gradient text (background-clip: text with gradient).",
+      "Don't use glassmorphism or heavy blur effects decoratively.",
+      "Don't add border-left/right colored stripes > 1px on cards or list items.",
+      "Don't use numbered section markers (01/02/03) as default scaffolding.",
+      "Don't add eyebrow (kicker) above every section — use purposefully.",
+      "Don't create identical card grids with same icon + heading + text pattern repeated.",
+      "Don't use placeholder gray text that doesn't meet 4.5:1 contrast.",
+      "Don't mix heading fonts — Lora only for headings.",
+      "Don't animate CSS layout properties unnecessarily."
+    ]
+  }
+}

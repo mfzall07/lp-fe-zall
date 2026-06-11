@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
+    <rect width="800" height="600" fill="#FFFFFF"/>
+    <rect x="40" y="40" width="720" height="520" fill="none" stroke="#ECEDEA" stroke-width="1"/>
+
+    <g stroke="#2D4D31" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="240" y="150" width="320" height="260" rx="4"/>
+        <line x1="280" y1="220" x2="520" y2="220"/>
+        <line x1="280" y1="250" x2="480" y2="250"/>
+        <line x1="280" y1="290" x2="520" y2="290"/>
+        <line x1="280" y1="310" x2="520" y2="310"/>
+        <line x1="280" y1="330" x2="500" y2="330"/>
+        <line x1="280" y1="350" x2="520" y2="350"/>
+        <line x1="280" y1="370" x2="460" y2="370"/>
+    </g>
+
+    <text x="400" y="490" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="12" letter-spacing="3" fill="#2D4D31" font-weight="500">ARTIKEL</text>
+    <text x="400" y="515" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="10" letter-spacing="2" fill="#9CA39E">WARKOP MEDAN</text>
+</svg>
