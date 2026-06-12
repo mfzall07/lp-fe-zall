@@ -1,0 +1,52 @@
+.historyGrid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 56px;
+    align-items: center;
+}
+
+.historyVisual {
+    position: relative;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    aspect-ratio: 4 / 5;
+    border: 1px solid var(--color-border);
+}
+
+.historyBadge {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background-color: var(--color-bg);
+    padding: 14px 18px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border);
+}
+
+.historyBadgeYear {
+    font-family: var(--font-heading), var(--font-heading-fallback);
+    font-size: 1.8rem;
+    color: var(--color-primary-dark);
+    line-height: 1;
+    font-weight: 500;
+}
+
+.historyBadgeLabel {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--color-muted);
+    margin-top: 6px;
+}
+
+.historyBody p {
+    margin-top: 16px;
+    color: var(--color-muted);
+    line-height: 1.8;
+}
+
+@media (max-width: 900px) {
+    .historyGrid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,90 @@
+.vmaGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
+.vmaCard {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.vmaCardAccent {
+    background-color: var(--color-primary);
+    color: var(--color-bg);
+    border-color: transparent;
+}
+
+.vmaCardAccent h3 {
+    color: var(--color-bg);
+}
+
+.vmaCardAccent p {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.vmaIcon {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-sm);
+    background-color: var(--color-primary-tint);
+    color: var(--color-primary);
+    display: grid;
+    place-items: center;
+    padding: 10px;
+}
+
+.vmaIcon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.vmaCardAccent .vmaIcon {
+    background-color: rgba(255, 255, 255, 0.12);
+    color: var(--color-bg);
+}
+
+.vmaList {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.vmaList li {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    font-size: 0.92rem;
+    line-height: 1.65;
+    color: var(--color-muted);
+}
+
+.vmaList li::before {
+    content: "";
+    flex-shrink: 0;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: var(--color-primary);
+    margin-top: 10px;
+}
+
+.vmaCardAccent .vmaList li {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.vmaCardAccent .vmaList li::before {
+    background-color: var(--color-bg);
+}
+
+@media (max-width: 900px) {
+    .vmaGrid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import EmptyState from "@/components/admin/EmptyState";
+import styles from "./DataTable.module.css";
 
 export interface DataTableColumn<T> {
     key: string;
@@ -13,6 +14,7 @@ interface DataTableProps<T> {
     getRowKey: (row: T) => string;
     emptyTitle?: string;
     emptyDescription?: string;
+    caption?: string;
 }
 
 function resolveEmptyTitle(title: string | undefined) {
@@ -30,7 +32,8 @@ export default function DataTable<T>({
     rows,
     getRowKey,
     emptyTitle,
-    emptyDescription
+    emptyDescription,
+    caption
 }: DataTableProps<T>) {
     if (rows.length === 0) {
         return (
@@ -42,11 +45,12 @@ export default function DataTable<T>({
     }
 
     return (
-        <table className="data-table">
+        <table className={styles.dataTable}>
+            <caption className="sr-only">{caption ?? "Data table"}</caption>
             <thead>
                 <tr>
                     {columns.map((col) => (
-                        <th key={col.key}>{col.header}</th>
+                        <th key={col.key} scope="col">{col.header}</th>
                     ))}
                 </tr>
             </thead>

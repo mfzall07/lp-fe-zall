@@ -3,6 +3,7 @@ import AdminHeader from "@/components/admin/AdminHeader";
 import AdminCard from "@/components/admin/AdminCard";
 import MenuForm from "@/components/admin/MenuForm";
 import { menuItems } from "@/data/menu";
+import layoutStyles from "@/app/admin/AdminLayout.module.css";
 
 interface PageProps {
     params: Promise<{ id: string }>;
@@ -17,8 +18,8 @@ export default async function AdminMenuEditPage({ params }: PageProps) {
     return (
         <>
             <AdminHeader title="Menu / Edit" />
-            <div className="admin-content">
-                <div className="admin-page-head">
+            <div className={layoutStyles.adminContent}>
+                <div className={layoutStyles.adminPageHead}>
                     <div>
                         <h2 className="heading-2">Edit Menu</h2>
                         <p>{item.name}</p>

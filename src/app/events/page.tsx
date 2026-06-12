@@ -6,6 +6,7 @@ import SectionTitle from "@/components/SectionTitle";
 import { events } from "@/data/events";
 import { articles } from "@/data/articles";
 import Image from "next/image";
+import pageHeroStyles from "@/styles/PageHero.module.css";
 
 export default function EventsPage() {
     return (
@@ -13,8 +14,8 @@ export default function EventsPage() {
             <Navbar />
 
             <main>
-                <section className="page-hero-simple">
-                    <div className="page-hero-simple-bg">
+                <section className={pageHeroStyles.pageHeroSimple}>
+                    <div className={pageHeroStyles.pageHeroSimpleBg}>
                         <Image
                             src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1600&q=80"
                             alt="Event Warkop Medan"
@@ -22,9 +23,9 @@ export default function EventsPage() {
                             style={{ objectFit: 'cover' }}
                             priority
                         />
-                        <div className="page-hero-simple-overlay"></div>
+                        <div className={pageHeroStyles.pageHeroSimpleOverlay}></div>
                     </div>
-                    <div className="container page-hero-simple-content">
+                    <div className={`container ${pageHeroStyles.pageHeroSimpleContent}`}>
                         <span className="eyebrow">Event & Artikel</span>
                         <h1 className="heading-display">Cerita, Acara,<br />dan Insight dari Dapur Kami</h1>
                         <p className="lead">

@@ -2,24 +2,17 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import Button from "@/components/Button";
-
-interface NavLinkItem {
-    href: string;
-    label: string;
-}
-
-const navLinks: NavLinkItem[] = [
-    { href: "/", label: "Beranda" },
-    { href: "/about", label: "Tentang Kami" },
-    { href: "/menu", label: "Menu" },
-    { href: "/outlets", label: "Outlet" },
-    { href: "/events", label: "Event & Artikel" },
-    { href: "/contact", label: "Kontak" }
-];
+import RenderWhen from "@/components/RenderWhen";
+import { NAV_LINKS } from "@/constants/navigation";
+import { ROUTES } from "@/constants/routes";
+import { brandSettings } from "@/data/brand";
+import styles from "./Navbar.module.css";
 
 export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);
+    const pathname = usePathname();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -31,21 +24,26 @@ export default function Navbar() {
     }, []);
 
     return (
-        <header className={`navbar ${scrolled ? "scrolled" : ""}`}>
-            <div className="container navbar-inner">
-                <Link href="/" className="navbar-brand">
-                    <span className="navbar-logo">W</span>
-                    <span className="navbar-brand-text">
-                        <span className="navbar-brand-name">Warkop Medan</span>
-                        <span className="navbar-brand-tag">di Jakarta</span>
+        <header className={`${styles.navbar} ${scrolled ? styles.scrolled : ""}`}>
+            <div className={`container ${styles.navbarInner}`}>
+                <Link href={ROUTES.HOME} className={styles.navbarBrand} aria-label={brandSettings.brandName}>
+                    <RenderWhen when={Boolean(brandSettings.logoUrl)}>
+                        <img src={brandSettings.logoUrl} alt={brandSettings.brandName} className={styles.navbarLogoImg} />
+                    </RenderWhen>
+                    <RenderWhen when={!brandSettings.logoUrl}>
+                        <span className={styles.navbarLogo}>{brandSettings.logoBadgeLetter}</span>
+                    </RenderWhen>
+                    <span className={styles.navbarBrandText}>
+                        <span className={styles.navbarBrandName}>{brandSettings.brandName}</span>
+                        <span className={styles.navbarBrandTag}>{brandSettings.brandTag}</span>
                     </span>
                 </Link>
 
-                <nav>
-                    <ul className="navbar-nav">
-                        {navLinks.map((link) => (
+                <nav aria-label="Main navigation">
+                    <ul className={styles.navbarNav}>
+                        {NAV_LINKS.map((link) => (
                             <li key={link.href}>
-                                <Link href={link.href} className="navbar-link">
+                                <Link href={link.href} className={styles.navbarLink} aria-current={pathname === link.href ? "page" : undefined}>
                                     {link.label}
                                 </Link>
                             </li>
@@ -53,8 +51,8 @@ export default function Navbar() {
                     </ul>
                 </nav>
 
-                <div className="navbar-cta">
-                    <Button href="/partnership" variant="outline">
+                <div className={styles.navbarCta}>
+                    <Button href={ROUTES.PARTNERSHIP} variant="outline">
                         Partnership
                     </Button>
                 </div>

@@ -2,14 +2,15 @@ import MenuList from "@/components/MenuList";
 import SectionTitle from "@/components/SectionTitle";
 import Button from "@/components/Button";
 import { menuItems } from "@/data/menu";
+import styles from "./MenuShowcase.module.css";
 
 const signatureItems = menuItems.filter((item) => item.isSignature);
 
 export default function MenuShowcase() {
     return (
-        <section className="section section-menu-showcase">
+        <section className={styles.sectionMenuShowcase}>
             <div className="container">
-                <div className="menu-showcase-header">
+                <div className={styles.menuShowcaseHeader}>
                     <SectionTitle
                         eyebrow="Menu Signature"
                         title="Rasa Medan yang Bikin Pulang Sebentar"
@@ -17,7 +18,7 @@ export default function MenuShowcase() {
                     />
                 </div>
                 <MenuList items={signatureItems} />
-                <div className="menu-showcase-cta">
+                <div className={styles.menuShowcaseCta}>
                     <Button href="/menu" variant="outline">Lihat seluruh menu</Button>
                 </div>
             </div>

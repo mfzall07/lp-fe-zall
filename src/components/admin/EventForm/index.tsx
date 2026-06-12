@@ -6,6 +6,9 @@ import FormField from "@/components/admin/FormField";
 import FormTextArea from "@/components/admin/FormTextArea";
 import RenderWhen from "@/components/RenderWhen";
 import type { EventItem } from "@/types";
+import { ROUTES } from "@/constants/routes";
+import { VALIDATION_MESSAGES, SUCCESS_MESSAGES } from "@/constants/messages";
+import formStyles from "@/styles/Form.module.css";
 
 interface EventFormProps {
     initial?: EventItem;
@@ -38,6 +41,7 @@ export default function EventForm({ initial, mode }: EventFormProps) {
     const [form, setForm] = useState<EventItem>(resolveInitial(initial));
     const [error, setError] = useState("");
     const [done, setDone] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     function set<K extends keyof EventItem>(key: K, value: EventItem[K]) {
         setForm((prev) => ({ ...prev, [key]: value }));
@@ -49,26 +53,28 @@ export default function EventForm({ initial, mode }: EventFormProps) {
         setDone(false);
 
         if (!form.title.trim()) {
-            setError("Judul wajib diisi.");
+            setError(VALIDATION_MESSAGES.EVENT_TITLE_REQUIRED);
             return;
         }
 
         if (!form.date.trim()) {
-            setError("Tanggal wajib diisi.");
+            setError(VALIDATION_MESSAGES.EVENT_DATE_REQUIRED);
             return;
         }
 
+        setIsSubmitting(true);
         console.log(`[EventForm] ${mode}`, form);
         setDone(true);
+        setIsSubmitting(false);
     }
 
     function handleCancel() {
-        router.push("/admin/events");
+        router.push(ROUTES.ADMIN_EVENTS);
     }
 
     return (
-        <form className="form-card" onSubmit={handleSubmit} noValidate>
-            <div className="form-grid">
+        <form className={formStyles.formCard} onSubmit={handleSubmit} noValidate>
+            <div className={formStyles.formGrid}>
                 <FormField id="ev-title" label="Judul" value={form.title} onChange={(v) => set("title", v)} full />
                 <FormField id="ev-tag" label="Kategori" value={form.tag} onChange={(v) => set("tag", v)} placeholder="Komunitas, Live Music, Workshop" />
                 <FormField id="ev-date" label="Tanggal" value={form.date} type="date" onChange={(v) => set("date", v)} />
@@ -78,21 +84,21 @@ export default function EventForm({ initial, mode }: EventFormProps) {
                 <FormField id="ev-image" label="URL Gambar" value={form.imageSrc} onChange={(v) => set("imageSrc", v)} full help="Path SVG/JPG di /public/images" />
 
                 <RenderWhen when={Boolean(error)}>
-                    <div className="form-field-full">
-                        <p className="form-error">{error}</p>
+                    <div className={formStyles.formFieldFull}>
+                        <p className={formStyles.formError} role="alert">{error}</p>
                     </div>
                 </RenderWhen>
 
                 <RenderWhen when={done}>
-                    <div className="form-field-full">
-                        <div className="form-success">Perubahan tersimpan (mock — backend belum aktif).</div>
+                    <div className={formStyles.formFieldFull}>
+                        <div className={formStyles.formSuccess} role="status" aria-live="polite">{SUCCESS_MESSAGES.MOCK_SAVED}</div>
                     </div>
                 </RenderWhen>
             </div>
 
-            <div className="form-actions">
+            <div className={formStyles.formActions}>
                 <button type="button" className="btn btn-ghost" onClick={handleCancel}>Batal</button>
-                <button type="submit" className="btn btn-primary">{resolveSubmitLabel(mode)}</button>
+                <button type="submit" className="btn btn-primary" disabled={isSubmitting}>{isSubmitting ? "Menyimpan..." : resolveSubmitLabel(mode)}</button>
             </div>
         </form>
     );

@@ -1,0 +1,61 @@
+.sectionCafeStory {
+    padding-top: 120px;
+    padding-bottom: 120px;
+    background-color: var(--color-bg);
+}
+
+.cafeStoryWrapper {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.cafeStoryContent {
+    max-width: 640px;
+}
+
+.cafeStoryBody {
+    margin-top: 32px;
+}
+
+.cafeStoryBody :global(.lead) {
+    color: var(--color-muted);
+    margin-bottom: 32px;
+}
+
+.cafeStoryVisual {
+    position: relative;
+}
+
+.cafeStoryImage {
+    aspect-ratio: 4 / 5;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(135deg, var(--color-primary-tint) 0%, var(--color-bg-alt) 100%);
+    border: 1px solid var(--color-border);
+    position: relative;
+    overflow: hidden;
+}
+
+.aboutSummaryBody {
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.aboutSummaryCta {
+    margin-top: 32px;
+    display: flex;
+    justify-content: center;
+}
+
+@media (max-width: 900px) {
+    .cafeStoryWrapper {
+        grid-template-columns: 1fr;
+        gap: 56px;
+    }
+
+    .cafeStoryVisual {
+        order: -1;
+    }
+}

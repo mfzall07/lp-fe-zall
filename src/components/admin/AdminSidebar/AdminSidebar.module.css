@@ -1,0 +1,125 @@
+.adminSidebar {
+    width: var(--sidebar-width);
+    flex-shrink: 0;
+    background-color: var(--color-primary-dark);
+    color: rgba(255, 255, 255, 0.85);
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.adminSidebarBrand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 24px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    margin-bottom: 8px;
+}
+
+.adminSidebarLogo {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-sm);
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #FFFFFF;
+    display: grid;
+    place-items: center;
+    font-family: var(--font-heading), var(--font-heading-fallback);
+    font-weight: 500;
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.adminSidebarLogoImg {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    border-radius: var(--radius-sm);
+    flex-shrink: 0;
+}
+
+.adminSidebarBrandName {
+    font-family: var(--font-heading), var(--font-heading-fallback);
+    font-weight: 600;
+    color: #FFFFFF;
+    font-size: 1rem;
+    letter-spacing: -0.01em;
+}
+
+.adminSidebarNav {
+    flex: 1;
+    padding: 8px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.adminSidebarSectionLabel {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: rgba(255, 255, 255, 0.35);
+    margin-top: 24px;
+    margin-bottom: 4px;
+    padding-left: 10px;
+    font-weight: 700;
+}
+
+.adminSidebarSectionLabel:first-child {
+    margin-top: 4px;
+}
+
+.adminSidebarLink {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 10px;
+    border-radius: var(--radius-md);
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.adminSidebarLink:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: #FFFFFF;
+}
+
+.adminSidebarLinkActive {
+    background-color: rgba(255, 255, 255, 0.14);
+    color: #FFFFFF;
+    font-weight: 600;
+}
+
+.adminSidebarLinkActive:hover {
+    background-color: rgba(255, 255, 255, 0.18);
+    color: #FFFFFF;
+}
+
+.adminSidebarFoot {
+    margin-top: auto;
+    padding: 16px 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.adminSidebarFoot .adminSidebarLink {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.85rem;
+}
+
+.adminSidebarFoot .adminSidebarLink:hover {
+    color: #FFFFFF;
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+@media (max-width: 900px) {
+    .adminSidebar {
+        display: none;
+    }
+}

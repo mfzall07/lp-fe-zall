@@ -1,23 +1,25 @@
+import styles from "./Skeleton.module.css";
+
 interface SkeletonProps {
     className?: string;
 }
 
 export default function Skeleton({ className = "" }: SkeletonProps) {
-    return <div className={`skeleton ${className}`} aria-hidden="true" />;
+    return <div className={`${styles.skeleton} ${className}`} aria-hidden="true" />;
 }
 
 export function MenuCardSkeleton() {
     return (
-        <div className="menu-card skeleton-card">
+        <div className={`menu-card ${styles.skeletonCard}`}>
             <div className="menu-card-media">
-                <Skeleton className="skeleton-media" />
+                <Skeleton className={styles.skeletonMedia} />
             </div>
             <div className="menu-card-body">
-                <Skeleton className="skeleton-eyebrow" />
-                <Skeleton className="skeleton-title" />
-                <Skeleton className="skeleton-text" />
-                <Skeleton className="skeleton-text skeleton-text-short" />
-                <Skeleton className="skeleton-price" />
+                <Skeleton className={styles.skeletonEyebrow} />
+                <Skeleton className={styles.skeletonTitle} />
+                <Skeleton className={styles.skeletonText} />
+                <Skeleton className={`${styles.skeletonText} ${styles.skeletonTextShort}`} />
+                <Skeleton className={styles.skeletonPrice} />
             </div>
         </div>
     );
@@ -25,16 +27,16 @@ export function MenuCardSkeleton() {
 
 export function OutletCardSkeleton() {
     return (
-        <div className="outlet-card skeleton-card">
+        <div className={`outlet-card ${styles.skeletonCard}`}>
             <div className="outlet-card-media">
-                <Skeleton className="skeleton-media" />
+                <Skeleton className={styles.skeletonMedia} />
             </div>
             <div className="outlet-card-body">
-                <Skeleton className="skeleton-eyebrow" />
-                <Skeleton className="skeleton-title" />
-                <Skeleton className="skeleton-text" />
-                <Skeleton className="skeleton-text skeleton-text-short" />
-                <Skeleton className="skeleton-btn" />
+                <Skeleton className={styles.skeletonEyebrow} />
+                <Skeleton className={styles.skeletonTitle} />
+                <Skeleton className={styles.skeletonText} />
+                <Skeleton className={`${styles.skeletonText} ${styles.skeletonTextShort}`} />
+                <Skeleton className={styles.skeletonBtn} />
             </div>
         </div>
     );
@@ -42,16 +44,16 @@ export function OutletCardSkeleton() {
 
 export function EventCardSkeleton() {
     return (
-        <div className="card skeleton-card">
+        <div className={`card ${styles.skeletonCard}`}>
             <div className="card-media">
-                <Skeleton className="skeleton-media" />
+                <Skeleton className={styles.skeletonMedia} />
             </div>
             <div className="card-body">
-                <Skeleton className="skeleton-eyebrow" />
-                <Skeleton className="skeleton-title" />
-                <Skeleton className="skeleton-text" />
-                <Skeleton className="skeleton-text skeleton-text-short" />
-                <Skeleton className="skeleton-meta" />
+                <Skeleton className={styles.skeletonEyebrow} />
+                <Skeleton className={styles.skeletonTitle} />
+                <Skeleton className={styles.skeletonText} />
+                <Skeleton className={`${styles.skeletonText} ${styles.skeletonTextShort}`} />
+                <Skeleton className={styles.skeletonMeta} />
             </div>
         </div>
     );
@@ -59,16 +61,16 @@ export function EventCardSkeleton() {
 
 export function ArticleCardSkeleton() {
     return (
-        <div className="card skeleton-card">
+        <div className={`card ${styles.skeletonCard}`}>
             <div className="card-media">
-                <Skeleton className="skeleton-media" />
+                <Skeleton className={styles.skeletonMedia} />
             </div>
             <div className="card-body">
-                <Skeleton className="skeleton-eyebrow" />
-                <Skeleton className="skeleton-title" />
-                <Skeleton className="skeleton-text" />
-                <Skeleton className="skeleton-text skeleton-text-short" />
-                <Skeleton className="skeleton-meta" />
+                <Skeleton className={styles.skeletonEyebrow} />
+                <Skeleton className={styles.skeletonTitle} />
+                <Skeleton className={styles.skeletonText} />
+                <Skeleton className={`${styles.skeletonText} ${styles.skeletonTextShort}`} />
+                <Skeleton className={styles.skeletonMeta} />
             </div>
         </div>
     );

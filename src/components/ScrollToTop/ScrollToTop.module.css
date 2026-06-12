@@ -1,0 +1,52 @@
+.scrollToTop {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-sm);
+    background-color: var(--color-primary);
+    color: var(--color-bg);
+    display: grid;
+    place-items: center;
+    box-shadow: 0 4px 16px rgba(45, 77, 49, 0.25);
+    border: none;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all var(--transition-base);
+    z-index: 40;
+}
+
+.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.scrollToTop:hover {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(45, 77, 49, 0.35);
+}
+
+.scrollToTop:active {
+    transform: translateY(-2px);
+}
+
+@media (max-width: 900px) {
+    .scrollToTop {
+        bottom: 24px;
+        right: 24px;
+        width: 44px;
+        height: 44px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .scrollToTop {
+        transition: opacity var(--transition-base), visibility var(--transition-base);
+        transform: none !important;
+    }
+}

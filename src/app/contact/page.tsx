@@ -2,6 +2,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ContactForm from "@/components/ContactForm";
 import Image from "next/image";
+import pageHeroStyles from "@/styles/PageHero.module.css";
+import contactStyles from "@/styles/ContactPage.module.css";
 
 export default function ContactPage() {
     return (
@@ -9,8 +11,8 @@ export default function ContactPage() {
             <Navbar />
 
             <main>
-                <section className="page-hero-simple">
-                    <div className="page-hero-simple-bg">
+                <section className={pageHeroStyles.pageHeroSimple}>
+                    <div className={pageHeroStyles.pageHeroSimpleBg}>
                         <Image
                             src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1600&q=80"
                             alt="Hubungi Warkop Medan"
@@ -18,9 +20,9 @@ export default function ContactPage() {
                             style={{ objectFit: 'cover' }}
                             priority
                         />
-                        <div className="page-hero-simple-overlay"></div>
+                        <div className={pageHeroStyles.pageHeroSimpleOverlay}></div>
                     </div>
-                    <div className="container page-hero-simple-content">
+                    <div className={`container ${pageHeroStyles.pageHeroSimpleContent}`}>
                         <span className="eyebrow">Hubungi Kami</span>
                         <h1 className="heading-display">Mari Ngobrol<br />Sebentar</h1>
                         <p className="lead">
@@ -32,13 +34,13 @@ export default function ContactPage() {
 
                 <section className="section">
                     <div className="container">
-                        <div className="contact-grid">
-                            <div className="contact-info">
+                        <div className={contactStyles.contactGrid}>
+                            <div className={contactStyles.contactInfo}>
                                 <h2 className="heading-2">PT Warkop Medan Indonesia</h2>
                                 <p className="lead">
                                     Pusat layanan untuk semua outlet Warkop Medan. Kami merespons dalam 1–2 hari kerja.
                                 </p>
-                                <ul className="contact-info-list">
+                                <ul className={contactStyles.contactInfoList}>
                                     <li><strong>Email</strong>business@warkopmdj.com</li>
                                     <li><strong>WhatsApp</strong>+62 811-1180-7322</li>
                                     <li><strong>Alamat</strong>Cabang Ciputat — Tangerang Selatan</li>

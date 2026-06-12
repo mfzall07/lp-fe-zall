@@ -1,0 +1,13 @@
+.emptyState {
+    text-align: center;
+    padding: 48px 24px;
+    color: var(--color-muted);
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius-md);
+    background-color: var(--color-surface);
+}
+
+.emptyState h3 {
+    color: var(--color-primary);
+    margin-bottom: 8px;
+}

@@ -1,0 +1,188 @@
+/* ----- Page Hero About ----- */
+
+.pageHeroAbout {
+    position: relative;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: var(--color-bg);
+}
+
+.pageHeroAboutBg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.pageHeroAboutBg img {
+    filter: brightness(0.5);
+}
+
+.pageHeroAboutOverlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(29, 45, 33, 0.5) 0%,
+        rgba(29, 45, 33, 0.8) 100%
+    );
+    z-index: 1;
+}
+
+.pageHeroAboutContent {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding-top: 140px;
+    padding-bottom: 80px;
+    max-width: 900px;
+}
+
+.pageHeroAboutContent :global(.eyebrow) {
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 24px;
+}
+
+.pageHeroAboutContent h1 {
+    color: var(--color-bg);
+    margin-bottom: 24px;
+}
+
+.pageHeroAboutContent :global(.lead) {
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (max-width: 900px) {
+    .pageHeroAbout {
+        min-height: 50vh;
+    }
+
+    .pageHeroAboutContent {
+        padding-top: 100px;
+        padding-bottom: 60px;
+    }
+}
+
+/* ----- Page Hero Simple ----- */
+
+.pageHeroSimple {
+    position: relative;
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: var(--color-bg);
+}
+
+.pageHeroSimpleBg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.pageHeroSimpleBg img {
+    filter: brightness(0.6);
+}
+
+.pageHeroSimpleOverlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(29, 45, 33, 0.4) 0%,
+        rgba(29, 45, 33, 0.75) 100%
+    );
+    z-index: 1;
+}
+
+.pageHeroSimpleContent {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding-top: 140px;
+    padding-bottom: 80px;
+    max-width: 900px;
+}
+
+.pageHeroSimpleContent :global(.eyebrow) {
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 24px;
+}
+
+.pageHeroSimpleContent h1 {
+    color: var(--color-bg);
+    margin-bottom: 24px;
+}
+
+.pageHeroSimpleContent :global(.lead) {
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (max-width: 900px) {
+    .pageHeroSimple {
+        min-height: 45vh;
+    }
+
+    .pageHeroSimpleContent {
+        padding-top: 100px;
+        padding-bottom: 60px;
+    }
+}
+
+/* ----- Page intro (for sub-pages) ----- */
+
+.pageIntro {
+    padding-top: 120px;
+    padding-bottom: 80px;
+    background: linear-gradient(
+        to bottom,
+        var(--color-bg-alt) 0%,
+        var(--color-bg) 100%
+    );
+    border-bottom: 1px solid var(--color-border);
+}
+
+.pageIntro :global(.eyebrow) {
+    display: inline-block;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.pageIntro :global(.eyebrow)::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-primary);
+    opacity: 0.3;
+}
+
+.pageIntro h1 {
+    margin-bottom: 24px;
+}
+
+.pageIntro p {
+    color: var(--color-muted);
+    margin-top: 24px;
+    max-width: 640px;
+    font-size: 1.08rem;
+    line-height: 1.7;
+}
+
+@media (max-width: 900px) {
+    .pageIntro {
+        padding-top: 80px;
+        padding-bottom: 56px;
+    }
+}

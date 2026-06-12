@@ -1,6 +1,7 @@
 import Image from "next/image";
 import SectionTitle from "@/components/SectionTitle";
 import type { CustomerPersona } from "@/types";
+import styles from "./PersonaGallery.module.css";
 
 interface CustomerPersonaGalleryProps {
     personas: CustomerPersona[];
@@ -26,11 +27,11 @@ export default function CustomerPersonaGallery({ personas }: CustomerPersonaGall
                 description="Dari perantau Medan, pekerja Jakarta, hingga keluarga dan komunitas — Warkop Medan jadi rumah kedua bagi banyak orang."
             />
 
-            <div className="persona-grid">
+            <div className={styles.personaGrid}>
                 {personas.map((persona) => (
-                    <figure key={persona.id} className="persona-card">
+                    <figure key={persona.id} className={styles.personaCard}>
                         <Image src={persona.imageSrc} alt={persona.name} width={400} height={400} />
-                        <figcaption className="persona-card-caption">{persona.name}</figcaption>
+                        <figcaption className={styles.personaCardCaption}>{persona.name}</figcaption>
                     </figure>
                 ))}
             </div>

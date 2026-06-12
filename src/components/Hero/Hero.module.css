@@ -1,0 +1,183 @@
+/* ----- Hero Cafe (Full-screen immersive) ----- */
+
+.heroCafe {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: var(--color-bg);
+}
+
+.heroCafeBg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.heroCafeBg img {
+    filter: brightness(0.6);
+}
+
+.heroCafeOverlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(29, 45, 33, 0.4) 0%,
+        rgba(29, 45, 33, 0.7) 100%
+    );
+    z-index: 1;
+}
+
+.heroCafeContent {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding-top: 120px;
+    padding-bottom: 120px;
+}
+
+.heroCafeBadge {
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-pill);
+    padding: 8px 20px;
+    margin-bottom: 32px;
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.heroCafeTitle {
+    font-family: var(--font-heading), var(--font-heading-fallback);
+    font-size: clamp(2.75rem, 6vw, 5rem);
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--color-bg);
+    margin-bottom: 28px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.heroCafeLead {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 48px;
+}
+
+.heroCafeActions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 80px;
+}
+
+.heroCafeActions :global(.btn-secondary) {
+    background-color: transparent;
+    color: #FFFFFF;
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+.heroCafeActions :global(.btn-secondary):hover {
+    background-color: rgba(255, 255, 255, 0.12);
+    border-color: #FFFFFF;
+    color: #FFFFFF;
+}
+
+.heroCafeStats {
+    display: flex;
+    gap: 64px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.heroCafeStat {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.heroCafeStatValue {
+    font-family: var(--font-heading), var(--font-heading-fallback);
+    font-size: 2.5rem;
+    font-weight: 500;
+    color: var(--color-bg);
+    line-height: 1;
+}
+
+.heroCafeStatLabel {
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+}
+
+.heroCafeScroll {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 500;
+}
+
+.heroCafeScroll svg {
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(8px);
+    }
+}
+
+@media (max-width: 900px) {
+    .heroCafeTitle {
+        font-size: clamp(2rem, 8vw, 3.5rem);
+    }
+
+    .heroCafeLead {
+        font-size: 1rem;
+    }
+
+    .heroCafeStats {
+        gap: 32px;
+    }
+
+    .heroCafeStatValue {
+        font-size: 2rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .heroCafeScroll svg {
+        animation: none;
+    }
+}

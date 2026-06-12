@@ -1,5 +1,6 @@
 import SectionTitle from "@/components/SectionTitle";
 import { about } from "@/data/about";
+import styles from "./VisionMissionAmbition.module.css";
 
 function CompassIcon() {
     return (
@@ -72,25 +73,25 @@ export default function VisionMissionAmbition() {
                     description="Tiga hal yang menuntun setiap keputusan, menu, dan layanan yang kami sajikan."
                 />
 
-                <div className="vma-grid">
-                    <article className="vma-card">
-                        <div className="vma-icon"><CompassIcon /></div>
+                <div className={styles.vmaGrid}>
+                    <article className={styles.vmaCard}>
+                        <div className={styles.vmaIcon}><CompassIcon /></div>
                         <h3 className="heading-3">Visi</h3>
                         <p>{about.vision}</p>
                     </article>
 
-                    <article className="vma-card">
-                        <div className="vma-icon"><ChecklistIcon /></div>
+                    <article className={styles.vmaCard}>
+                        <div className={styles.vmaIcon}><ChecklistIcon /></div>
                         <h3 className="heading-3">Misi</h3>
-                        <ul className="vma-list">
+                        <ul className={styles.vmaList}>
                             {about.mission.map((item) => (
                                 <li key={item}>{item}</li>
                             ))}
                         </ul>
                     </article>
 
-                    <article className="vma-card vma-card-accent">
-                        <div className="vma-icon"><PeakIcon /></div>
+                    <article className={`${styles.vmaCard} ${styles.vmaCardAccent}`}>
+                        <div className={styles.vmaIcon}><PeakIcon /></div>
                         <h3 className="heading-3">Ambisi</h3>
                         <p>{about.ambition}</p>
                     </article>

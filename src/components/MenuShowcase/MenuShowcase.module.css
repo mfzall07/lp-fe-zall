@@ -1,0 +1,19 @@
+.sectionMenuShowcase {
+    padding-top: 120px;
+    padding-bottom: 120px;
+    background: linear-gradient(
+        to bottom,
+        var(--color-bg) 0%,
+        var(--color-bg-alt) 100%
+    );
+}
+
+.menuShowcaseHeader {
+    margin-bottom: 64px;
+}
+
+.menuShowcaseCta {
+    margin-top: 56px;
+    display: flex;
+    justify-content: center;
+}

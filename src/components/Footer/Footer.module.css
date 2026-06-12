@@ -1,0 +1,121 @@
+.footer {
+    background-color: var(--color-primary-dark);
+    color: rgba(255, 255, 255, 0.85);
+    border-top: none;
+    padding-top: 80px;
+    padding-bottom: 40px;
+}
+
+.footer h4 {
+    color: var(--color-bg);
+    font-family: var(--font-heading), var(--font-heading-fallback);
+    font-size: 1rem;
+    margin-bottom: 20px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+}
+
+.footerGrid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 56px;
+    margin-bottom: 64px;
+}
+
+.footerBrandLogo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.footerLogo {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-sm);
+    background-color: var(--color-bg);
+    color: var(--color-primary);
+    display: grid;
+    place-items: center;
+    font-family: var(--font-heading), var(--font-heading-fallback);
+    font-weight: 500;
+    font-size: 1.1rem;
+    letter-spacing: 0.01em;
+}
+
+.footerLogoImg {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    border-radius: var(--radius-sm);
+}
+
+.footerBrandText {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+
+.footerBrandName {
+    font-family: var(--font-heading), var(--font-heading-fallback);
+    font-weight: 500;
+    color: var(--color-bg);
+    font-size: 1.05rem;
+}
+
+.footerBrandTag {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.footerBrand p {
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 0;
+    max-width: 340px;
+    line-height: 1.7;
+    font-size: 0.95rem;
+}
+
+.footerLinks {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footerLinks a {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.92rem;
+    transition: all var(--transition-fast);
+    display: inline-block;
+}
+
+.footerLinks a:hover {
+    color: var(--color-bg);
+    transform: translateX(4px);
+}
+
+.footerBottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.85rem;
+}
+
+@media (max-width: 900px) {
+    .footerGrid {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+
+    .footerBottom {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+    }
+}

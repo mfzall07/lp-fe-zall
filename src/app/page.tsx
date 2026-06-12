@@ -10,6 +10,8 @@ import MotifDivider from "@/components/MotifDivider";
 import Button from "@/components/Button";
 import { outlets } from "@/data/outlets";
 import { events } from "@/data/events";
+import ambitionStyles from "@/styles/AmbitionBanner.module.css";
+import aboutStyles from "@/components/AboutSummary/AboutSummary.module.css";
 
 const previewOutlets = outlets.slice(0, 3);
 const previewEvents = events.slice(0, 3);
@@ -33,7 +35,7 @@ export default function HomePage() {
                             description="Setiap outlet menyajikan rasa Medan yang sama otentiknya — dengan suasana yang hangat dan nyaman."
                         />
                         <OutletList outlets={previewOutlets} />
-                        <div className="about-summary-cta">
+                        <div className={aboutStyles.aboutSummaryCta}>
                             <Button href="/outlets" variant="outline">Lihat semua outlet</Button>
                         </div>
                     </div>
@@ -48,7 +50,7 @@ export default function HomePage() {
                             description="Dari ngopi bareng komunitas, malam musik, hingga workshop barista — Warkop Medan selalu punya cerita."
                         />
                         <EventList events={previewEvents} />
-                        <div className="about-summary-cta">
+                        <div className={aboutStyles.aboutSummaryCta}>
                             <Button href="/events" variant="outline">Lihat semua event & artikel</Button>
                         </div>
                     </div>
@@ -56,7 +58,7 @@ export default function HomePage() {
 
                 <section className="section">
                     <div className="container">
-                        <div className="ambition-banner">
+                        <div className={ambitionStyles.ambitionBanner}>
                             <span className="eyebrow">Ambisi Kami</span>
                             <h2>Menjadi top of mind kuliner Medan di Pulau Jawa.</h2>
                         </div>

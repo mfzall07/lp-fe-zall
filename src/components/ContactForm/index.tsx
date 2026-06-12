@@ -2,6 +2,8 @@
 
 import { useState, type FormEvent } from "react";
 import RenderWhen from "@/components/RenderWhen";
+import { VALIDATION_MESSAGES, SUCCESS_MESSAGES } from "@/constants/messages";
+import styles from "@/styles/Form.module.css";
 
 interface ContactPayload {
     name: string;
@@ -27,6 +29,7 @@ export default function ContactForm() {
     const [form, setForm] = useState<ContactPayload>(initialState);
     const [submitted, setSubmitted] = useState(false);
     const [error, setError] = useState("");
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     function handleChange(field: keyof ContactPayload, value: string) {
         setForm((prev) => ({ ...prev, [field]: value }));
@@ -38,33 +41,35 @@ export default function ContactForm() {
         setSubmitted(false);
 
         if (!form.name.trim()) {
-            setError("Nama wajib diisi.");
+            setError(VALIDATION_MESSAGES.NAME_REQUIRED);
             return;
         }
 
         if (!isValidEmail(form.email)) {
-            setError("Email tidak valid.");
+            setError(VALIDATION_MESSAGES.EMAIL_INVALID);
             return;
         }
 
         if (!form.message.trim()) {
-            setError("Pesan tidak boleh kosong.");
+            setError(VALIDATION_MESSAGES.MESSAGE_REQUIRED);
             return;
         }
 
+        setIsSubmitting(true);
         console.log("[ContactForm] submission", form);
         setForm(initialState);
         setSubmitted(true);
+        setIsSubmitting(false);
     }
 
     return (
-        <form className="form-card" onSubmit={handleSubmit} noValidate>
-            <div className="form-grid">
-                <div className="form-field">
-                    <label className="form-label" htmlFor="contact-name">Nama Lengkap</label>
+        <form className={styles.formCard} onSubmit={handleSubmit} noValidate>
+            <div className={styles.formGrid}>
+                <div className={styles.formField}>
+                    <label className={styles.formLabel} htmlFor="contact-name">Nama Lengkap</label>
                     <input
                         id="contact-name"
-                        className="form-input"
+                        className={styles.formInput}
                         type="text"
                         value={form.name}
                         onChange={(e) => handleChange("name", e.target.value)}
@@ -72,11 +77,11 @@ export default function ContactForm() {
                     />
                 </div>
 
-                <div className="form-field">
-                    <label className="form-label" htmlFor="contact-email">Email</label>
+                <div className={styles.formField}>
+                    <label className={styles.formLabel} htmlFor="contact-email">Email</label>
                     <input
                         id="contact-email"
-                        className="form-input"
+                        className={styles.formInput}
                         type="email"
                         value={form.email}
                         onChange={(e) => handleChange("email", e.target.value)}
@@ -84,11 +89,11 @@ export default function ContactForm() {
                     />
                 </div>
 
-                <div className="form-field">
-                    <label className="form-label" htmlFor="contact-phone">No. WhatsApp</label>
+                <div className={styles.formField}>
+                    <label className={styles.formLabel} htmlFor="contact-phone">No. WhatsApp</label>
                     <input
                         id="contact-phone"
-                        className="form-input"
+                        className={styles.formInput}
                         type="tel"
                         value={form.phone}
                         onChange={(e) => handleChange("phone", e.target.value)}
@@ -96,11 +101,11 @@ export default function ContactForm() {
                     />
                 </div>
 
-                <div className="form-field">
-                    <label className="form-label" htmlFor="contact-subject">Subjek</label>
+                <div className={styles.formField}>
+                    <label className={styles.formLabel} htmlFor="contact-subject">Subjek</label>
                     <input
                         id="contact-subject"
-                        className="form-input"
+                        className={styles.formInput}
                         type="text"
                         value={form.subject}
                         onChange={(e) => handleChange("subject", e.target.value)}
@@ -108,11 +113,11 @@ export default function ContactForm() {
                     />
                 </div>
 
-                <div className="form-field form-field-full">
-                    <label className="form-label" htmlFor="contact-message">Pesan</label>
+                <div className={`${styles.formField} ${styles.formFieldFull}`}>
+                    <label className={styles.formLabel} htmlFor="contact-message">Pesan</label>
                     <textarea
                         id="contact-message"
-                        className="form-textarea"
+                        className={styles.formTextarea}
                         value={form.message}
                         onChange={(e) => handleChange("message", e.target.value)}
                         placeholder="Tulis pesan Anda di sini..."
@@ -121,22 +126,22 @@ export default function ContactForm() {
                 </div>
 
                 <RenderWhen when={Boolean(error)}>
-                    <div className="form-field-full">
-                        <p className="form-error">{error}</p>
+                    <div className={styles.formFieldFull}>
+                        <p className={styles.formError} role="alert">{error}</p>
                     </div>
                 </RenderWhen>
 
                 <RenderWhen when={submitted}>
-                    <div className="form-field-full">
-                        <div className="form-success">
-                            Terima kasih! Pesan Anda sudah kami terima. Tim kami akan segera menghubungi.
+                    <div className={styles.formFieldFull}>
+                        <div className={styles.formSuccess} role="status" aria-live="polite">
+                            {SUCCESS_MESSAGES.CONTACT_SENT}
                         </div>
                     </div>
                 </RenderWhen>
             </div>
 
-            <div className="form-actions">
-                <button className="btn btn-primary" type="submit">Kirim Pesan</button>
+            <div className={styles.formActions}>
+                <button className="btn btn-primary" type="submit" disabled={isSubmitting}>{isSubmitting ? "Mengirim..." : "Kirim Pesan"}</button>
             </div>
         </form>
     );

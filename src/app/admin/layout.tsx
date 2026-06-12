@@ -1,4 +1,5 @@
 import AdminSidebar from "@/components/admin/AdminSidebar";
+import styles from "./AdminLayout.module.css";
 
 interface AdminLayoutProps {
     children: React.ReactNode;
@@ -6,9 +7,9 @@ interface AdminLayoutProps {
 
 export default function AdminLayout({ children }: AdminLayoutProps) {
     return (
-        <div className="admin-shell">
+        <div className={styles.adminShell}>
             <AdminSidebar />
-            <div className="admin-main">{children}</div>
+            <div className={styles.adminMain}>{children}</div>
         </div>
     );
 }

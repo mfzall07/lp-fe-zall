@@ -4,6 +4,7 @@ import { useState, type FormEvent } from "react";
 import FormTextArea from "@/components/admin/FormTextArea";
 import RenderWhen from "@/components/RenderWhen";
 import type { AboutContent } from "@/types";
+import formStyles from "@/styles/Form.module.css";
 
 interface VisionMissionEditorProps {
     initial: AboutContent;
@@ -15,6 +16,7 @@ export default function VisionMissionEditor({ initial }: VisionMissionEditorProp
     const [ambition, setAmbition] = useState(initial.ambition);
     const [error, setError] = useState("");
     const [done, setDone] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     function handleSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
@@ -36,13 +38,15 @@ export default function VisionMissionEditor({ initial }: VisionMissionEditorProp
             .map((line) => line.trim())
             .filter((line) => line.length > 0);
 
+        setIsSubmitting(true);
         console.log("[VisionMissionEditor] save", { vision, mission, ambition });
         setDone(true);
+        setIsSubmitting(false);
     }
 
     return (
-        <form className="form-card" onSubmit={handleSubmit} noValidate>
-            <div className="form-grid">
+        <form className={formStyles.formCard} onSubmit={handleSubmit} noValidate>
+            <div className={formStyles.formGrid}>
                 <FormTextArea id="vma-vision" label="Visi" value={vision} onChange={setVision} rows={3} />
                 <FormTextArea
                     id="vma-mission"
@@ -55,20 +59,20 @@ export default function VisionMissionEditor({ initial }: VisionMissionEditorProp
                 <FormTextArea id="vma-ambition" label="Ambisi" value={ambition} onChange={setAmbition} rows={3} />
 
                 <RenderWhen when={Boolean(error)}>
-                    <div className="form-field-full">
-                        <p className="form-error">{error}</p>
+                    <div className={formStyles.formFieldFull}>
+                        <p className={formStyles.formError} role="alert">{error}</p>
                     </div>
                 </RenderWhen>
 
                 <RenderWhen when={done}>
-                    <div className="form-field-full">
-                        <div className="form-success">Visi, misi, dan ambisi tersimpan (mock).</div>
+                    <div className={formStyles.formFieldFull}>
+                        <div className={formStyles.formSuccess} role="status" aria-live="polite">Visi, misi, dan ambisi tersimpan (mock).</div>
                     </div>
                 </RenderWhen>
             </div>
 
-            <div className="form-actions">
-                <button type="submit" className="btn btn-primary">Simpan</button>
+            <div className={formStyles.formActions}>
+                <button type="submit" className="btn btn-primary" disabled={isSubmitting}>{isSubmitting ? "Menyimpan..." : "Simpan"}</button>
             </div>
         </form>
     );

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Lora, Inter } from "next/font/google";
 import ScrollToTop from "@/components/ScrollToTop";
-import "@/styles/styles.css";
+import "@/styles/globals.css";
 
 const lora = Lora({
     subsets: ["latin"],

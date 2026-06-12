@@ -1,6 +1,7 @@
 import MenuList from "@/components/MenuList";
 import { menuCategories } from "@/data/menu";
 import type { MenuItem } from "@/types";
+import styles from "@/components/MenuCard/MenuCard.module.css";
 
 interface MenuByCategoryProps {
     items: MenuItem[];
@@ -15,10 +16,10 @@ function CategoryGroup({ category, items }: CategoryGroupProps) {
     if (items.length === 0) return null;
 
     return (
-        <div className="menu-category-group">
-            <div className="menu-category-head">
+        <div className={styles.menuCategoryGroup}>
+            <div className={styles.menuCategoryHead}>
                 <h2 className="heading-2">{category}</h2>
-                <div className="menu-category-rule" />
+                <div className={styles.menuCategoryRule} />
             </div>
             <MenuList items={items} />
         </div>
@@ -27,7 +28,7 @@ function CategoryGroup({ category, items }: CategoryGroupProps) {
 
 export default function MenuByCategory({ items }: MenuByCategoryProps) {
     return (
-        <div className="menu-by-category">
+        <div className={styles.menuByCategory}>
             {menuCategories.map((category) => (
                 <CategoryGroup
                     key={category}

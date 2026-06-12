@@ -1,0 +1,66 @@
+.contactGrid {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 64px;
+    align-items: start;
+}
+
+.contactInfo {
+    position: sticky;
+    top: calc(var(--nav-height) + 32px);
+}
+
+.contactInfo :global(.heading-2) {
+    font-size: 1.5rem;
+    line-height: 1.3;
+    margin-bottom: 12px;
+}
+
+.contactInfo :global(.lead) {
+    font-size: 1rem;
+    color: var(--color-muted);
+    line-height: 1.7;
+}
+
+.contactInfoList {
+    list-style: none;
+    margin-top: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    font-size: 0.92rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+.contactInfoList li {
+    padding: 14px 20px;
+    color: var(--color-muted);
+    border-bottom: 1px solid var(--color-border);
+    line-height: 1.5;
+}
+
+.contactInfoList li:last-child {
+    border-bottom: none;
+}
+
+.contactInfoList strong {
+    display: block;
+    color: var(--color-primary-dark);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+@media (max-width: 900px) {
+    .contactGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .contactInfo {
+        position: static;
+    }
+}

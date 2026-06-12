@@ -1,20 +1,20 @@
+import styles from "./MotifDivider.module.css";
+
 interface MotifDividerProps {
     tone?: "default" | "soft";
-}
-
-function resolveClassName(tone: "default" | "soft") {
-    if (tone === "soft") return "motif-divider motif-divider-soft";
-    return "motif-divider";
 }
 
 export default function MotifDivider({ tone }: MotifDividerProps) {
     const resolvedTone = tone ?? "default";
 
     return (
-        <div className={resolveClassName(resolvedTone)} aria-hidden="true">
-            <span className="motif-divider-line" />
-            <span className="motif-divider-dot" />
-            <span className="motif-divider-line" />
+        <div
+            className={`${styles.motifDivider} ${resolvedTone === "soft" ? styles.motifDividerSoft : ""}`}
+            aria-hidden="true"
+        >
+            <span className={styles.motifDividerLine} />
+            <span className={styles.motifDividerDot} />
+            <span className={styles.motifDividerLine} />
         </div>
     );
 }

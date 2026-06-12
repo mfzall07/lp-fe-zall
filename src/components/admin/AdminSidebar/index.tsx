@@ -2,76 +2,47 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-interface SidebarLink {
-    href: string;
-    label: string;
-}
-
-interface SidebarSection {
-    label: string;
-    links: SidebarLink[];
-}
-
-const sections: SidebarSection[] = [
-    {
-        label: "Overview",
-        links: [{ href: "/admin", label: "Dashboard" }]
-    },
-    {
-        label: "Konten",
-        links: [
-            { href: "/admin/menu", label: "Menu" },
-            { href: "/admin/events", label: "Event" },
-            { href: "/admin/articles", label: "Artikel" },
-            { href: "/admin/outlets", label: "Outlet" }
-        ]
-    },
-    {
-        label: "Profil Brand",
-        links: [
-            { href: "/admin/history", label: "Sejarah" },
-            { href: "/admin/vision-mission", label: "Visi, Misi, Ambisi" }
-        ]
-    },
-    {
-        label: "Inbox",
-        links: [
-            { href: "/admin/contact-list", label: "Pesan Kontak" },
-            { href: "/admin/partnership-list", label: "Partnership & Investasi" }
-        ]
-    }
-];
+import RenderWhen from "@/components/RenderWhen";
+import { ADMIN_SIDEBAR_SECTIONS } from "@/constants/navigation";
+import { ROUTES } from "@/constants/routes";
+import { brandSettings } from "@/data/brand";
+import styles from "./AdminSidebar.module.css";
 
 function isActive(pathname: string, href: string) {
-    if (href === "/admin") return pathname === "/admin";
+    if (href === ROUTES.ADMIN) return pathname === ROUTES.ADMIN;
     return pathname.startsWith(href);
 }
 
 function linkClassName(active: boolean) {
-    if (active) return "admin-sidebar-link admin-sidebar-link-active";
-    return "admin-sidebar-link";
+    if (active) return `${styles.adminSidebarLink} ${styles.adminSidebarLinkActive}`;
+    return styles.adminSidebarLink;
 }
 
 export default function AdminSidebar() {
     const pathname = usePathname();
 
     return (
-        <aside className="admin-sidebar">
-            <div className="admin-sidebar-brand">
-                <span className="navbar-logo">W</span>
-                <span className="admin-sidebar-brand-name">Warkop CMS</span>
+        <aside className={styles.adminSidebar} aria-label="Admin navigation">
+            <div className={styles.adminSidebarBrand}>
+                <RenderWhen when={Boolean(brandSettings.logoUrl)}>
+                    <img src={brandSettings.logoUrl} alt={brandSettings.brandName} className={styles.adminSidebarLogoImg} />
+                </RenderWhen>
+                <RenderWhen when={!brandSettings.logoUrl}>
+                    <span className={styles.adminSidebarLogo}>{brandSettings.logoBadgeLetter}</span>
+                </RenderWhen>
+                <span className={styles.adminSidebarBrandName}>{brandSettings.cmsName}</span>
             </div>
 
-            <nav className="admin-sidebar-nav">
-                {sections.map((section) => (
+            <nav className={styles.adminSidebarNav}>
+                {ADMIN_SIDEBAR_SECTIONS.map((section) => (
                     <div key={section.label}>
-                        <div className="admin-sidebar-section-label">{section.label}</div>
+                        <p className={styles.adminSidebarSectionLabel}>{section.label}</p>
                         {section.links.map((link) => (
                             <Link
                                 key={link.href}
                                 href={link.href}
                                 className={linkClassName(isActive(pathname, link.href))}
+                                aria-current={isActive(pathname, link.href) ? "page" : undefined}
                             >
                                 {link.label}
                             </Link>
@@ -80,8 +51,8 @@ export default function AdminSidebar() {
                 ))}
             </nav>
 
-            <div className="admin-sidebar-foot">
-                <Link href="/" className="admin-sidebar-link">
+            <div className={styles.adminSidebarFoot}>
+                <Link href={ROUTES.HOME} className={styles.adminSidebarLink}>
                     ← Kembali ke situs
                 </Link>
             </div>

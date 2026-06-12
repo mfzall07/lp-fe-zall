@@ -1,5 +1,7 @@
 import Image from "next/image";
 import type { Outlet } from "@/types";
+import styles from "./OutletCard.module.css";
+import cardStyles from "@/styles/Card.module.css";
 
 interface OutletCardProps {
     outlet: Outlet;
@@ -7,22 +9,22 @@ interface OutletCardProps {
 
 export default function OutletCard({ outlet }: OutletCardProps) {
     return (
-        <article className="outlet-card">
-            <div className="outlet-card-media">
+        <article className={styles.outletCard}>
+            <div className={styles.outletCardMedia}>
                 <Image src={outlet.imageSrc} alt={outlet.name} width={800} height={600} />
             </div>
-            <div className="outlet-card-body">
-                <span className="card-eyebrow">Outlet</span>
-                <h3 className="outlet-card-name">{outlet.name}</h3>
-                <p className="outlet-card-address">{outlet.address}</p>
+            <div className={styles.outletCardBody}>
+                <span className={cardStyles.cardEyebrow}>Outlet</span>
+                <h3 className={styles.outletCardName}>{outlet.name}</h3>
+                <p className={styles.outletCardAddress}>{outlet.address}</p>
 
-                <div className="outlet-card-info">
+                <div className={styles.outletCardInfo}>
                     <span>{outlet.hours}</span>
                     <span>•</span>
                     <span>{outlet.phone}</span>
                 </div>
 
-                <a className="btn btn-ghost outlet-card-cta" href={outlet.mapsUrl} target="_blank" rel="noreferrer">
+                <a className={`btn btn-ghost ${styles.outletCardCta}`} href={outlet.mapsUrl} target="_blank" rel="noreferrer">
                     Lihat di Maps
                 </a>
             </div>

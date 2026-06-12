@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import MenuByCategory from "@/components/MenuByCategory";
 import { menuItems } from "@/data/menu";
 import Image from "next/image";
+import pageHeroStyles from "@/styles/PageHero.module.css";
 
 export default function MenuPage() {
     return (
@@ -10,8 +11,8 @@ export default function MenuPage() {
             <Navbar />
 
             <main>
-                <section className="page-hero-simple">
-                    <div className="page-hero-simple-bg">
+                <section className={pageHeroStyles.pageHeroSimple}>
+                    <div className={pageHeroStyles.pageHeroSimpleBg}>
                         <Image
                             src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=1600&q=80"
                             alt="Menu Warkop Medan"
@@ -19,9 +20,9 @@ export default function MenuPage() {
                             style={{ objectFit: 'cover' }}
                             priority
                         />
-                        <div className="page-hero-simple-overlay"></div>
+                        <div className={pageHeroStyles.pageHeroSimpleOverlay}></div>
                     </div>
-                    <div className="container page-hero-simple-content">
+                    <div className={`container ${pageHeroStyles.pageHeroSimpleContent}`}>
                         <span className="eyebrow">Menu</span>
                         <h1 className="heading-display">Cita Rasa Medan,<br />Disajikan Hangat</h1>
                         <p className="lead">
@@ -31,7 +32,7 @@ export default function MenuPage() {
                     </div>
                 </section>
 
-                <section className="section section-menu-full">
+                <section className="section">
                     <div className="container">
                         <MenuByCategory items={menuItems} />
                     </div>

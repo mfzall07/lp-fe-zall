@@ -3,6 +3,8 @@ import Footer from "@/components/Footer";
 import HistorySection from "@/components/HistorySection";
 import VisionMissionAmbition from "@/components/VisionMissionAmbition";
 import Image from "next/image";
+import pageHeroStyles from "@/styles/PageHero.module.css";
+import ambitionStyles from "@/styles/AmbitionBanner.module.css";
 
 export default function AboutPage() {
     return (
@@ -10,8 +12,8 @@ export default function AboutPage() {
             <Navbar />
 
             <main>
-                <section className="page-hero-about">
-                    <div className="page-hero-about-bg">
+                <section className={pageHeroStyles.pageHeroAbout}>
+                    <div className={pageHeroStyles.pageHeroAboutBg}>
                         <Image
                             src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1600&q=80"
                             alt="Warkop Medan Interior"
@@ -19,9 +21,9 @@ export default function AboutPage() {
                             style={{ objectFit: 'cover' }}
                             priority
                         />
-                        <div className="page-hero-about-overlay"></div>
+                        <div className={pageHeroStyles.pageHeroAboutOverlay}></div>
                     </div>
-                    <div className="container page-hero-about-content">
+                    <div className={`container ${pageHeroStyles.pageHeroAboutContent}`}>
                         <span className="eyebrow">Tentang Kami</span>
                         <h1 className="heading-display">Warkop Medan,<br />Lahir dari Rindu pada Rasa</h1>
                         <p className="lead">
@@ -36,7 +38,7 @@ export default function AboutPage() {
 
                 <section className="section">
                     <div className="container">
-                        <div className="ambition-banner">
+                        <div className={ambitionStyles.ambitionBanner}>
                             <span className="eyebrow">Ambisi Kami</span>
                             <h2>Menjadi top of mind kuliner Medan di Pulau Jawa.</h2>
                         </div>

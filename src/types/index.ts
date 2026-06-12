@@ -70,6 +70,14 @@ export interface ContactSubmission {
     status: "new" | "read" | "replied";
 }
 
+export interface BrandSettings {
+    logoUrl: string;
+    brandName: string;
+    brandTag: string;
+    cmsName: string;
+    logoBadgeLetter: string;
+}
+
 export interface PartnershipSubmission {
     id: string;
     fullName: string;

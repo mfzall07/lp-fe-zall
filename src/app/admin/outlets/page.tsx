@@ -4,6 +4,9 @@ import AdminCard from "@/components/admin/AdminCard";
 import DataTable, { type DataTableColumn } from "@/components/admin/DataTable";
 import { outlets } from "@/data/outlets";
 import type { Outlet } from "@/types";
+import { ROUTES } from "@/constants/routes";
+import layoutStyles from "@/app/admin/AdminLayout.module.css";
+import dtStyles from "@/components/admin/DataTable/DataTable.module.css";
 
 const columns: DataTableColumn<Outlet>[] = [
     { key: "name", header: "Nama", render: (row) => <strong>{row.name}</strong> },
@@ -14,7 +17,7 @@ const columns: DataTableColumn<Outlet>[] = [
         key: "actions",
         header: "",
         render: (row) => (
-            <div className="data-table-actions">
+            <div className={dtStyles.dataTableActions}>
                 <Link href={`/admin/outlets/${row.id}/edit`} className="btn btn-ghost">Edit</Link>
             </div>
         )
@@ -25,13 +28,13 @@ export default function AdminOutletsPage() {
     return (
         <>
             <AdminHeader title="Outlet" />
-            <div className="admin-content">
-                <div className="admin-page-head">
+            <div className={layoutStyles.adminContent}>
+                <div className={layoutStyles.adminPageHead}>
                     <div>
                         <h2 className="heading-2">Daftar Outlet</h2>
                         <p>Kelola informasi outlet yang tampil di situs publik.</p>
                     </div>
-                    <Link href="/admin/outlets/new" className="btn btn-primary">Tambah Outlet</Link>
+                    <Link href={ROUTES.ADMIN_OUTLETS_NEW} className="btn btn-primary">Tambah Outlet</Link>
                 </div>
                 <AdminCard>
                     <DataTable columns={columns} rows={outlets} getRowKey={(row) => row.id} />

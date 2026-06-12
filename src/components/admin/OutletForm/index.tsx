@@ -6,6 +6,9 @@ import FormField from "@/components/admin/FormField";
 import FormTextArea from "@/components/admin/FormTextArea";
 import RenderWhen from "@/components/RenderWhen";
 import type { Outlet } from "@/types";
+import { ROUTES } from "@/constants/routes";
+import { VALIDATION_MESSAGES, SUCCESS_MESSAGES } from "@/constants/messages";
+import formStyles from "@/styles/Form.module.css";
 
 interface OutletFormProps {
     initial?: Outlet;
@@ -38,6 +41,7 @@ export default function OutletForm({ initial, mode }: OutletFormProps) {
     const [form, setForm] = useState<Outlet>(resolveInitial(initial));
     const [error, setError] = useState("");
     const [done, setDone] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     function set<K extends keyof Outlet>(key: K, value: Outlet[K]) {
         setForm((prev) => ({ ...prev, [key]: value }));
@@ -49,26 +53,28 @@ export default function OutletForm({ initial, mode }: OutletFormProps) {
         setDone(false);
 
         if (!form.name.trim()) {
-            setError("Nama outlet wajib diisi.");
+            setError(VALIDATION_MESSAGES.OUTLET_NAME_REQUIRED);
             return;
         }
 
         if (!form.address.trim()) {
-            setError("Alamat outlet wajib diisi.");
+            setError(VALIDATION_MESSAGES.OUTLET_ADDRESS_REQUIRED);
             return;
         }
 
+        setIsSubmitting(true);
         console.log(`[OutletForm] ${mode}`, form);
         setDone(true);
+        setIsSubmitting(false);
     }
 
     function handleCancel() {
-        router.push("/admin/outlets");
+        router.push(ROUTES.ADMIN_OUTLETS);
     }
 
     return (
-        <form className="form-card" onSubmit={handleSubmit} noValidate>
-            <div className="form-grid">
+        <form className={formStyles.formCard} onSubmit={handleSubmit} noValidate>
+            <div className={formStyles.formGrid}>
                 <FormField id="ol-name" label="Nama Outlet" value={form.name} onChange={(v) => set("name", v)} full />
                 <FormField id="ol-city" label="Kota" value={form.city} onChange={(v) => set("city", v)} />
                 <FormField id="ol-phone" label="Telepon / WA" value={form.phone} onChange={(v) => set("phone", v)} type="tel" />
@@ -78,21 +84,21 @@ export default function OutletForm({ initial, mode }: OutletFormProps) {
                 <FormTextArea id="ol-address" label="Alamat Lengkap" value={form.address} onChange={(v) => set("address", v)} rows={3} />
 
                 <RenderWhen when={Boolean(error)}>
-                    <div className="form-field-full">
-                        <p className="form-error">{error}</p>
+                    <div className={formStyles.formFieldFull}>
+                        <p className={formStyles.formError} role="alert">{error}</p>
                     </div>
                 </RenderWhen>
 
                 <RenderWhen when={done}>
-                    <div className="form-field-full">
-                        <div className="form-success">Perubahan tersimpan (mock — backend belum aktif).</div>
+                    <div className={formStyles.formFieldFull}>
+                        <div className={formStyles.formSuccess} role="status" aria-live="polite">{SUCCESS_MESSAGES.MOCK_SAVED}</div>
                     </div>
                 </RenderWhen>
             </div>
 
-            <div className="form-actions">
+            <div className={formStyles.formActions}>
                 <button type="button" className="btn btn-ghost" onClick={handleCancel}>Batal</button>
-                <button type="submit" className="btn btn-primary">{resolveSubmitLabel(mode)}</button>
+                <button type="submit" className="btn btn-primary" disabled={isSubmitting}>{isSubmitting ? "Menyimpan..." : resolveSubmitLabel(mode)}</button>
             </div>
         </form>
     );

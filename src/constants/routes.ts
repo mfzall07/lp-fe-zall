@@ -1,0 +1,31 @@
+export const ROUTES = {
+  HOME: "/",
+  ABOUT: "/about",
+  MENU: "/menu",
+  OUTLETS: "/outlets",
+  EVENTS: "/events",
+  CONTACT: "/contact",
+  PARTNERSHIP: "/partnership",
+  LOGIN: "/login",
+  ADMIN: "/admin",
+  ADMIN_MENU: "/admin/menu",
+  ADMIN_MENU_NEW: "/admin/menu/new",
+  ADMIN_EVENTS: "/admin/events",
+  ADMIN_EVENTS_NEW: "/admin/events/new",
+  ADMIN_ARTICLES: "/admin/articles",
+  ADMIN_ARTICLES_NEW: "/admin/articles/new",
+  ADMIN_OUTLETS: "/admin/outlets",
+  ADMIN_OUTLETS_NEW: "/admin/outlets/new",
+  ADMIN_HISTORY: "/admin/history",
+  ADMIN_VISION_MISSION: "/admin/vision-mission",
+  ADMIN_CONTACT_LIST: "/admin/contact-list",
+  ADMIN_PARTNERSHIP_LIST: "/admin/partnership-list",
+  ADMIN_BRAND_SETTINGS: "/admin/brand-settings",
+} as const;
+
+export const buildRoute = {
+  adminMenuEdit: (id: string) => `/admin/menu/${id}/edit`,
+  adminEventsEdit: (id: string) => `/admin/events/${id}/edit`,
+  adminArticlesEdit: (id: string) => `/admin/articles/${id}/edit`,
+  adminOutletsEdit: (id: string) => `/admin/outlets/${id}/edit`,
+};

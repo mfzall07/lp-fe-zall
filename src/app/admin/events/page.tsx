@@ -4,6 +4,9 @@ import AdminCard from "@/components/admin/AdminCard";
 import DataTable, { type DataTableColumn } from "@/components/admin/DataTable";
 import { events } from "@/data/events";
 import type { EventItem } from "@/types";
+import { ROUTES } from "@/constants/routes";
+import layoutStyles from "@/app/admin/AdminLayout.module.css";
+import dtStyles from "@/components/admin/DataTable/DataTable.module.css";
 
 const columns: DataTableColumn<EventItem>[] = [
     {
@@ -14,7 +17,7 @@ const columns: DataTableColumn<EventItem>[] = [
     {
         key: "tag",
         header: "Kategori",
-        render: (row) => <span className="tag">{row.tag}</span>
+        render: (row) => <span className={dtStyles.tag}>{row.tag}</span>
     },
     {
         key: "location",
@@ -30,7 +33,7 @@ const columns: DataTableColumn<EventItem>[] = [
         key: "actions",
         header: "",
         render: (row) => (
-            <div className="data-table-actions">
+            <div className={dtStyles.dataTableActions}>
                 <Link href={`/admin/events/${row.id}/edit`} className="btn btn-ghost">Edit</Link>
             </div>
         )
@@ -41,13 +44,13 @@ export default function AdminEventsPage() {
     return (
         <>
             <AdminHeader title="Event" />
-            <div className="admin-content">
-                <div className="admin-page-head">
+            <div className={layoutStyles.adminContent}>
+                <div className={layoutStyles.adminPageHead}>
                     <div>
                         <h2 className="heading-2">Daftar Event</h2>
                         <p>Kelola semua event yang akan tayang di situs publik.</p>
                     </div>
-                    <Link href="/admin/events/new" className="btn btn-primary">
+                    <Link href={ROUTES.ADMIN_EVENTS_NEW} className="btn btn-primary">
                         Tambah Event
                     </Link>
                 </div>

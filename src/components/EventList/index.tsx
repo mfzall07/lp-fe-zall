@@ -11,10 +11,21 @@ interface EventListProps {
 
 export default function EventList({ events }: EventListProps) {
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         setLoading(false);
     }, []);
+
+    if (error) {
+        return (
+            <div className="section">
+                <div className="container">
+                    <p className="body-muted" role="alert">{error}</p>
+                </div>
+            </div>
+        );
+    }
 
     if (events.length === 0 && !loading) {
         return (

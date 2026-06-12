@@ -8,6 +8,9 @@ import FormSelect from "@/components/admin/FormSelect";
 import RenderWhen from "@/components/RenderWhen";
 import { menuCategories } from "@/data/menu";
 import type { MenuCategory, MenuItem } from "@/types";
+import { ROUTES } from "@/constants/routes";
+import { VALIDATION_MESSAGES, SUCCESS_MESSAGES } from "@/constants/messages";
+import formStyles from "@/styles/Form.module.css";
 
 interface MenuFormProps {
     initial?: MenuItem;
@@ -54,6 +57,7 @@ export default function MenuForm({ initial, mode }: MenuFormProps) {
     const [form, setForm] = useState<MenuItem>(resolveInitial(initial));
     const [error, setError] = useState("");
     const [done, setDone] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     function set<K extends keyof MenuItem>(key: K, value: MenuItem[K]) {
         setForm((prev) => ({ ...prev, [key]: value }));
@@ -74,31 +78,33 @@ export default function MenuForm({ initial, mode }: MenuFormProps) {
         setDone(false);
 
         if (!form.name.trim()) {
-            setError("Nama menu wajib diisi.");
+            setError(VALIDATION_MESSAGES.MENU_NAME_REQUIRED);
             return;
         }
 
         if (!form.description.trim()) {
-            setError("Deskripsi menu wajib diisi.");
+            setError(VALIDATION_MESSAGES.MENU_DESC_REQUIRED);
             return;
         }
 
         if (form.price <= 0) {
-            setError("Harga harus lebih dari nol.");
+            setError(VALIDATION_MESSAGES.MENU_PRICE_INVALID);
             return;
         }
 
+        setIsSubmitting(true);
         console.log(`[MenuForm] ${mode}`, form);
         setDone(true);
+        setIsSubmitting(false);
     }
 
     function handleCancel() {
-        router.push("/admin/menu");
+        router.push(ROUTES.ADMIN_MENU);
     }
 
     return (
-        <form className="form-card" onSubmit={handleSubmit} noValidate>
-            <div className="form-grid">
+        <form className={formStyles.formCard} onSubmit={handleSubmit} noValidate>
+            <div className={formStyles.formGrid}>
                 <FormField
                     id="mn-name"
                     label="Nama Menu"
@@ -136,8 +142,8 @@ export default function MenuForm({ initial, mode }: MenuFormProps) {
                     rows={4}
                 />
 
-                <div className="form-field form-field-full form-checkbox">
-                    <label htmlFor="mn-signature" className="form-checkbox-label">
+                <div className={`${formStyles.formField} ${formStyles.formFieldFull} ${formStyles.formCheckbox}`}>
+                    <label htmlFor="mn-signature" className={formStyles.formCheckboxLabel}>
                         <input
                             id="mn-signature"
                             type="checkbox"
@@ -146,25 +152,25 @@ export default function MenuForm({ initial, mode }: MenuFormProps) {
                         />
                         <span>Tandai sebagai menu signature</span>
                     </label>
-                    <span className="form-help">Menu signature akan ditampilkan di halaman beranda.</span>
+                    <span className={formStyles.formHelp}>Menu signature akan ditampilkan di halaman beranda.</span>
                 </div>
 
                 <RenderWhen when={Boolean(error)}>
-                    <div className="form-field-full">
-                        <p className="form-error">{error}</p>
+                    <div className={formStyles.formFieldFull}>
+                        <p className={formStyles.formError} role="alert">{error}</p>
                     </div>
                 </RenderWhen>
 
                 <RenderWhen when={done}>
-                    <div className="form-field-full">
-                        <div className="form-success">Perubahan tersimpan (mock — backend belum aktif).</div>
+                    <div className={formStyles.formFieldFull}>
+                        <div className={formStyles.formSuccess} role="status" aria-live="polite">{SUCCESS_MESSAGES.MOCK_SAVED}</div>
                     </div>
                 </RenderWhen>
             </div>
 
-            <div className="form-actions">
+            <div className={formStyles.formActions}>
                 <button type="button" className="btn btn-ghost" onClick={handleCancel}>Batal</button>
-                <button type="submit" className="btn btn-primary">{resolveSubmitLabel(mode)}</button>
+                <button type="submit" className="btn btn-primary" disabled={isSubmitting}>{isSubmitting ? "Menyimpan..." : resolveSubmitLabel(mode)}</button>
             </div>
         </form>
     );

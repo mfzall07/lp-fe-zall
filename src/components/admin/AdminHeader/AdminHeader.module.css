@@ -1,0 +1,23 @@
+.adminHeader {
+    background-color: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+    padding: 16px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.adminHeader h1 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-primary-dark);
+    letter-spacing: -0.01em;
+}
+
+.adminHeader :global(.btn) {
+    padding: 8px 18px;
+    font-size: 0.85rem;
+}
